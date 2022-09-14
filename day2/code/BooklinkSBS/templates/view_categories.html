@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title> Booklink </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">
+				 <img src="/images/booklink_logo.png">
+				 <span class="navbar-brand h1">Booklink</span>
+				</a>
+				<div class="navbar-nav me-auto">
+					<a class="nav-link active" href="/">Home</a> 
+					<a class="nav-link active" href="/categories">Categories</a> 
+					<a class="nav-link active" href="/all">Items</a> 
+					<a class="nav-link"	href="/aboutus">About Us</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		<div class="h1"> View Categories </div>
+		<table class="table bordered">
+			<thead>
+				<tr>
+					<th> ID </th>
+					<th> Category </th>
+				</tr>
+			</thead>
+			<tbody>
+				<th:block th:each="category : ${listCategory}">
+					<tr>
+						<td th:text="${category.id}"></td>
+						<td th:text="${category.name}"> </td>
+					</tr>
+				</th:block>
+			</tbody>		
+		</table>
+	
+	</div>
