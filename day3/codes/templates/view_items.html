@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title> Booklink </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">
+				 <img src="/images/booklink_logo.png">
+				 <span class="navbar-brand h1">Booklink</span>
+				</a>
+				<div class="navbar-nav me-auto">
+					<a class="nav-link active" href="/">Home</a> 
+					<a class="nav-link active" href="/categories">Categories</a> 
+					<a class="nav-link active" href="/items">Items</a> 
+					<a class="nav-link"	href="/aboutus">About Us</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		<div class="h1"> View Categories </div>
+		<table class="table bordered">
+			<thead>
+				<tr>
+					<th> ID </th>
+					<th> Name </th>
+					<th> Description </th>
+					<th> Price </th>
+					<th> Quantity </th>
+						
+				</tr>
+			</thead>
+			<tbody>
+				<th:block th:each="item : ${listItems}">
+					<tr>
+						<td th:text="${item.id}"></td>
+						<td th:text="${item.name}"> </td>
+						<td th:text="${item.description}"> </td>
+						<td th:text="${item.price}"> </td>
+						<td th:text="${item.quantity}"> </td>
+					</tr>
+				</th:block>
+			</tbody>		
+		</table>
+		<form action="/items/add" method="get">
+			<button type="submit" class="btn btn-primary"> Add Item </button>
+		</form>
+	
+	</div>
