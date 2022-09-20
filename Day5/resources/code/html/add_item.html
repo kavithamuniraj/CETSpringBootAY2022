@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Booklink - Add Item</title>
+
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/css/bootstrap.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/header"></div>
+		<main>
+			<h1>Add new Item</h1>
+			<form action="/items/save" th:object="${item}" method="post"
+				enctype="multipart/form-data">
+
+				<div class="mb-3 col-5">
+					<label for="item_name" class="form-label">Name</label> <input
+						id="item_name" class="form-control" type="text" th:field="*{name}">
+				</div>
+
+				<div class="mb-3 col-5">
+					<label for="item_description" class="form-label">Description</label>
+					<input id="item_description" class="form-control" type="text"
+						th:field="*{description}">
+
+				</div>
+
+				<div class="mb-3 col-5">
+					<label for="item_price" class="form-label">Price</label> <input
+						id="item_price" class="form-control" type="text"
+						th:field="*{price}">
+				</div>
+
+				<div class="mb-3 col-5">
+					<label for="item_quantity" class="form-label">Quantity</label> <input
+						id="item_quantity" class="form-control" type="text"
+						th:field="*{quantity}">
+				</div>
+
+
+				<div class="mb-3 col-5">
+					<label for="item_quantity" class="form-label">Category: </label> <select
+						id="item_quantity" class="form-control" th:field="*{category}">
+						<option value="">Choose one</option>
+						<option th:each="cat : ${catList}" th:value="${cat.id}"
+							th:text="${cat.name}"></option>
+					</select>
+				</div>
+
+				<div class="mb-3 col-5">
+					<label for="itemImage" class="form-label">Item image: </label> 
+					<input type="file" class="form-control" id="itemImage" name="itemImage" accept="image/png, image/jpeg" />
+				</div>
+				
+				<div class="mt-5">
+					<input type="submit" value="Add Item">
+				</div>
+
+
+			</form>
+		</main>
+		<div th:replace="fragments/footer"></div>
+	</div>
+</body>
+</html>

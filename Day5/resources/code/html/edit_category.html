@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Booklink - Edit Category</title>
+
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/header"></div>
+		<main>
+			<h1>Edit Category</h1>
+			<form th:action="@{/categories/edit/{id}(id=${category.id})}"
+				th:object="${category}" method="post">
+
+				<div class="mb-3 col-5">
+					<label for="category_name" class="form-label">Category</label> <input
+						id="category_name" class="form-control" type="text" th:field="*{name}">
+				</div>
+				<div class="mt-3 mb-5">
+					<input type="submit" value="Update Category">
+				</div>
+			</form>
+		</main>
+		<div th:replace="fragments/footer"></div>
+	</div>
+</body>
+</html>

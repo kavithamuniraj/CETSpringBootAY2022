@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Booklink - View Categories</title>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/css/bootstrap.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/header"></div>
+		<main>
+			<div class="h1">View Categories</div>
+			<a href="/categories/add" class="btn btn-primary">Add Category</a>
+			<table class="table bordered">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Category</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="category : ${listCategories}">
+						<td th:text="${category.id}"></td>
+						<td><a th:href=@{/items/category/{id}(id=${category.id})}><span
+								th:text="${category.name}"></span></a></td>
+						<td><a th:href="@{/categories/edit/{id}(id=${category.id})}">Edit</a>
+							| <a th:href="@{/categories/delete/{id}(id=${category.id})}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</main>
+		<div th:replace="fragments/footer"></div>
+	</div>
+</body>
+</html>
+
